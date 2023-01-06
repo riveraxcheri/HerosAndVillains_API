@@ -12,7 +12,7 @@ def supers_list(request):
         super_type = request.query_params.get('super_type')
         queryset = Super.objects.all()
         if super_type:
-            queryset = queryset.filter(super_type=super_type)
+            queryset = queryset.filter(super_type__type=super_type)
 
         serializer = SuperSerializer(queryset, many=True)
         return Response(serializer.data)
